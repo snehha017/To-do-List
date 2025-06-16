@@ -2,70 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Signup</title>
+    <title>Register</title>
     <style>
-        body{
-            font-family: Arial, sans-serif;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            height: 100vh;
-        }
-        
-        .signup-container{
-            background: white;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            width: 300px;
-            height: 500px;
-        }
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* changed from align-content to align-items */
+  height: 100vh;
+  margin: 0;
+}
 
-        .signup-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.signup-container {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 500px;
+}
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-        .input i {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-        }
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-        button {
-            width: 107%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
 
-        .error {
-            color: red;
-            font-size: 0.9em;
-        }
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
 
-        .panel{
-            position: absolute;
-            justify-content: center;
-            text-align: center;
-            
-        }
+button:hover {
+  background-color: #1877f2;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.input i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.panel {
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+}
+
     </style>
 </head>
 
@@ -99,7 +114,7 @@
             <input type="password" id="confirm_password" name="confirm_password" required><br>
             <label id="cnfpwdrslt"></label>
             {% if error %}
-                <p style="color: red;">{{ error }}</p>
+                <p style="color: red; text-align: center;">{{ error }}</p>
             {% endif %}
             
 

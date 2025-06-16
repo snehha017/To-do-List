@@ -4,24 +4,88 @@
   <meta charset="UTF-8">
   <title>Login Form</title>
 </head>
-<body>
 
-    <h2>Login Form</h2>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f2f5;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  padding: 10px;
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #145dbf;
+}
+
+
+</style>
+
+
+
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
 
     <form action="/login" method="POST">
-        <label for="login_username">Username:</label><br>
-        <input type="text" id="login_username" name="login_username" required><br><br>
+        <label for="login_username">Username:</label>
+        <input type="text" id="login_username" name="login_username" required>
 
-        <label for="login_password">Password:</label><br>
-        <input type="password" id="login_password" name="login_password" required><br><br>
+        <label for="login_password">Password:</label>
+        <input type="password" id="login_password" name="login_password" required>
 
-        <input type="submit" value="Login">
+        <button type="submit" class="btn">Login</button>
 
         <div class="panel">
           <p>Don't have an account?</p>
           <a href="/registration">Register Here</a>
         </div>
     </form>
+  </div>
 
 </body>
 </html> 
