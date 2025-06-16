@@ -3,6 +3,8 @@ from werkzeug.security import check_password_hash
 import pyodbc
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
 
 # SQL Server connection details
 server = 'localhost'
@@ -40,8 +42,7 @@ def signup():
         confirm_password = request.form['confirm_password']
         
         if password != confirm_password:
-            flash("Passwords do not match!", "error")
-            return render_template('registration.html')
+            return render_template('registration.html', error="Password do not match!")
 
         try:
             if checkUsername(username):
@@ -58,9 +59,19 @@ def signup():
             print("DEBUG: Exception occurred ->", e)  # This line helps print error clearly
             return f"Error: {str(e)}"
 
+
+
+
+
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+@app.route("/registration")
+def registration():
+    return render_template("registration.html")
+
+
 
 
 @app.route('/todo')
@@ -80,7 +91,7 @@ def add():
     cursor.execute('INSERT INTO tasks (content) VALUES (?)', (task,))
     conn.commit()
     conn.close()
-    return redirect(url_for('index'))
+    return redirect(url_for('todo'))
 
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -89,7 +100,7 @@ def delete(id):
     cursor.execute('DELETE FROM tasks WHERE id = ?', (id,))
     conn.commit()
     conn.close()
-    return redirect(url_for('index'))
+    return redirect(url_for('todo'))
 
 if __name__ == '__main__':
     app.run(debug=True)

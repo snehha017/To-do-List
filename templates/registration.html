@@ -17,7 +17,7 @@
             background: white;
             padding: 30px 40px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             width: 300px;
             height: 500px;
         }
@@ -59,6 +59,13 @@
             color: red;
             font-size: 0.9em;
         }
+
+        .panel{
+            position: absolute;
+            justify-content: center;
+            text-align: center;
+            
+        }
     </style>
 </head>
 
@@ -68,9 +75,7 @@
 <body>
     <div class="signup-container">
 
-     
-
-        <h2>Signup</h2>
+        <h2>Register</h2>
 
         <form action="/signup" onsubmit="return validateSignupForm" method="POST">
         
@@ -78,10 +83,7 @@
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" required><br>
             <label id="usrrslt"></label>
-            {% if error %}                        
-                <p style="color:red;" id="checkusr">{{ error }}</p> 
-            {% endif %}
-
+            
            
             <label for="email">Email:</label><br> 
             <input type="email" id="email" name="email" required><br>
@@ -96,13 +98,16 @@
             <label for="confirm_password">Confirm Password:</label><br>
             <input type="password" id="confirm_password" name="confirm_password" required><br>
             <label id="cnfpwdrslt"></label>
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
             
 
             <button type="submit" class="btn">Register</button>
 
-            <div class="toggle-panel toggle-right">
-                <p>Already have an account?</p>
-                <a href="/login">Login</a>
+            <div class="panel">
+                <p style="text-align:center;">Already have an account?</p>
+                <a href="/login" style="text-align:center;">Login Here</a>
             </div>
         </form>
     </div>
@@ -112,76 +117,76 @@
 
     <script>
         
-function isValidUsername(username) {
-    const usernameRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{3,20}$/;
-    return usernameRegex.test(username);
-}
+        function isValidUsername(username) {
+            const usernameRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{3,20}$/;
+            return usernameRegex.test(username);
+        }
 
-function isValidEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
+        function isValidEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
 
-function isValidPassword(password) {
-    return password.length >= 5 && password.length <= 20;
-}
+        function isValidPassword(password) {
+            return password.length >= 5 && password.length <= 20;
+        }
 
-// SIGN UP
-function validateSignupForm() {
+        // SIGN UP
+        function validateSignupForm() {
 
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirm_password").value;
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
 
-    const usernameResult = document.getElementById("usrrslt");
-    const emailResult = document.getElementById("emlrslt");
-    const passwordResult = document.getElementById("pwdrslt");
-    const confirmPasswordResult = document.getElementById("cnfpwdrslt");
+            const usernameResult = document.getElementById("usrrslt");
+            const emailResult = document.getElementById("emlrslt");
+            const passwordResult = document.getElementById("pwdrslt");
+            const confirmPasswordResult = document.getElementById("cnfpwdrslt");
 
 
-    let isValid = true;
+            let isValid = true;
 
-    //VALIDATE EMAIL
-    emailResult.textContent = "";
-    if (!isValidEmail(email)) {
-        emailResult.textContent = "Invalid Email!";
-        emailResult.style.color = "red";
-        emailResult.style.fontSize = "15px";  
-        //alert("Invalid Email");
-        isValid = false;
-    } 
+            //VALIDATE EMAIL
+            emailResult.textContent = "";
+            if (!isValidEmail(email)) {
+                emailResult.textContent = "Invalid Email!";
+                emailResult.style.color = "red";
+                emailResult.style.fontSize = "15px";  
+                //alert("Invalid Email");
+                isValid = false;
+            } 
 
-    //VALIDATE USERNAME
-    usernameResult.textContent = "";
-    if (!isValidUsername(username)) {
-        usernameResult.textContent = "Invalid Username!";
-        usernameResult.style.color = "red";
-        usernameResult.style.fontSize = "15px";  
-        //alert("Invalid Username");
-        isValid = false;
-    }
+            //VALIDATE USERNAME
+            usernameResult.textContent = "";
+            if (!isValidUsername(username)) {
+                usernameResult.textContent = "Invalid Username!";
+                usernameResult.style.color = "red";
+                usernameResult.style.fontSize = "15px";  
+                //alert("Invalid Username");
+                isValid = false;
+            }
 
-    //VALIDATE PASSWORD
-    passwordResult.textContent = "";
-    if (!isValidPassword(password)) {
-        passwordResult.textContent = "Invalid Password!";
-        passwordResult.style.color = "red";
-        passwordResult.style.fontSize = "15px";  
-        //alert("Invalid Password");
-        isValid = false;
-    } 
+            //VALIDATE PASSWORD
+            passwordResult.textContent = "";
+            if (!isValidPassword(password)) {
+                passwordResult.textContent = "Invalid Password!";
+                passwordResult.style.color = "red";
+                passwordResult.style.fontSize = "15px";  
+                //alert("Invalid Password");
+                isValid = false;
+            } 
 
-    //VALIDATE CONFIRM PASSWORD
-    confirmPasswordResult.textContent = "";
-    if (password !== confirmPassword) {
-        confirmPasswordResult.textContent = "Passwords do not match!";
-        confirmPasswordResult.style.color = "red";
-        confirmPasswordResult.style.fontSize = "15px";
-        isValid = false;
-    }
-    return isValid;
-}
+            //VALIDATE CONFIRM PASSWORD
+            confirmPasswordResult.textContent = "";
+            if (password !== confirmPassword) {
+                confirmPasswordResult.textContent = "Passwords do not match!";
+                confirmPasswordResult.style.color = "red";
+                confirmPasswordResult.style.fontSize = "15px";
+                isValid = false;
+            }
+            return isValid;
+        }
     </script>
 </body>
 </html>
