@@ -59,19 +59,33 @@ def signup():
             print("DEBUG: Exception occurred ->", e)  # This line helps print error clearly
             return f"Error: {str(e)}"
 
-
-
-
-
-@app.route("/login")
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if request.method == "POST":
+        username = request.form['login_username']
+        password = request.form['login_password']
+        
+        conn = pyodbc.connect(conn_str)
+        cursor = conn.cursor()
+
+        query = "SELECT * FROM users WHERE username = ? AND password = ?"
+        cursor.execute(query, (username, password))
+        user = cursor.fetchone()
+
+        if user:
+            session['username'] = username
+            flash('Login successful!', 'success')
+            return redirect(url_for('todo'))  
+        else:
+            flash('Invalid username or password', 'error')
+            return redirect(url_for('login'))
+    
+    return render_template('login.html')
+
 
 @app.route("/registration")
 def registration():
     return render_template("registration.html")
-
-
 
 
 @app.route('/todo')
