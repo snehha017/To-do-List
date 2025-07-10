@@ -1,0 +1,109 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #b5eebc 0%, #85dd91 100%);
+    margin: 0;
+    padding : 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container,
+.login-container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin: 10px 0 5px;
+    color: #444;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    transition: 0.3s border;
+}
+
+input:focus{
+    border-color: #5cb85c ;
+    outline: none;
+}
+
+input::placeholder {
+    color: #867f7f;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+
+.btn {
+    width: 100%;
+    background-color: #5cb85c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4cae4c;
+}
+
+.panel {
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.panel a {
+    color: #5cb85c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.panel a:hover {
+    text-decoration: underline;
+}
+
+p[style*="color:red"] {
+    font-size: 10px;
+    margin-top: 10px;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

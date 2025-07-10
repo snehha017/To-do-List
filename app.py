@@ -12,12 +12,13 @@ database = 'myprogram'
 
 conn_str = f"DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};DATABASE={database};Trusted_Connection=yes;"
 
-@app.route('/')
-def index():
-    return render_template('registration.html')
 
 def get_connection():
     return pyodbc.connect(conn_str)
+
+@app.route('/')
+def index():
+    return render_template('registration.html')
 
 def checkUsername(name: str) -> bool:
     try:
@@ -53,7 +54,8 @@ def signup():
             cursor.execute("INSERT INTO Users (username, password, email) VALUES (?, ?, ?)", (username, password, email))
             conn.commit()
             conn.close()
-            return redirect(url_for('todo'))
+            session['username']= username
+            return redirect(url_for('login'))
 
         except Exception as e:
             print("DEBUG: Exception occurred ->", e)  # This line helps print error clearly
@@ -74,7 +76,6 @@ def login():
 
         if user:
             session['username'] = username
-            flash('Login successful!', 'success')
             return redirect(url_for('todo'))  
         else:
             flash('Invalid username or password', 'error')
@@ -86,6 +87,8 @@ def login():
 @app.route("/registration")
 def registration():
     return render_template("registration.html")
+
+
 
 
 @app.route('/todo')
