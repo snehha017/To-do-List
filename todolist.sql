@@ -8,16 +8,17 @@ SELECT * FROM tasks
 CREATE TABLE Users (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     UserName NVARCHAR(100),
-    Password NVARCHAR(100)
+    Password NVARCHAR(100),
+    ConfirmPassword NVARCHAR(100),
+    Email NVARCHAR(50)
 );
 
-ALTER TABLE Users 
-ADD Email VARCHAR(50)
+ALTER TABLE Users
+DROP COLUMN ConfirmPassword;
 
 ALTER TABLE Users
 ADD AccCreatedDate DATETIME DEFAULT GETDATE()
 
 SELECT * FROM Users
 
-ALTER TABLE Users
-ADD ConfirmPassword VARCHAR(50)
+

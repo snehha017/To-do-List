@@ -1,0 +1,233 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+ 
+ 
+ body {
+    font-family: 'Segoe UI', sans-serif;
+    background: url(/static/images/tree.jpg) no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    
+}
+
+
+.container {
+    background: transparent;
+    border: 5px solid rgb(143, 233, 143);
+    padding: 20px;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    
+    /*animation: fadeIn 0.6s ease-in-out;*/
+}
+
+
+
+
+/*@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}*/
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.todo-input {
+    flex: 1;
+    outline: none;
+    padding: 10px 10px 10px 20px;
+    background-color: transparent;
+    border: 2px solid #c0c4c0;
+    border-radius: 30px;
+    color: #eee;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.todo-input:focus {
+    border-color: #5cb85c;
+    outline: none;
+}
+
+.todo-input::placeholder {
+    color: #bfbfbf;
+}
+
+.add-button {
+    border: none;
+    outline: none;
+    background: #94d494;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.empty-image {
+    width: 300px;
+    height: auto;
+    align-items: center;
+}
+
+.todo {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom, #72da72, #54a054);
+    border-radius: 5px;
+    height: 60px;
+    margin: 10px 0;
+    padding: 10px 12px;
+    border: 2px solid rgb(81, 184, 81);
+    transition: all 0.2s ease;
+}
+
+.todo:first-child {
+    margin-top: 0;
+}
+
+.todo:last-child {
+    margin-bottom: 0;
+}
+
+.todo:hover {
+    background-color:linear-gradient(to bottom, #69c869, #4a8d4a);
+}
+
+.todo label {
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #eee;
+}
+
+.todo span {
+    padding-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+span::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-left: -30px;
+    border-radius: 100px;
+    border: 2px solid #e6b7eca1;
+}
+
+input[type='checkbox'] {
+    visibility: hidden;
+}
+
+input:checked + span {
+    text-decoration: line-through
+}
+
+.todo:hover input:checked + span::before, input:checked + span::before {
+    background: url(./check.svg) 50% 50% no-repeat green;
+    border-color: green;
+}
+
+.todo:hover span::before {
+    border-color: #eee;
+}
+
+.todo .delete-btn  {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #eee;
+    font-size: 24px;
+}
+
+.todos-container  {
+    height: 380px;
+    overflow: overlay;
+}
+
+.todos-container::-webkit-scrollbar{
+    width: 5px;
+    margin-right: 5px;
+}
+
+.todos-container::-webkit-scrollbar-track{
+    background: transparent;
+    border-radius: 20px;
+    margin-right: 8px;
+}
+
+.todos-container::-webkit-scrollbar-thumb{
+    background: rgb(112, 203, 112);
+    border-radius: 20px;
+}
+
+.todos-container::-webkit-scrollbar-thumb:hover{
+    background: rgb(91, 159, 91);
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.filter {
+    color: #eee;
+    padding: 5px 15px;
+    border-radius: 100px;
+    border: 2px solid #c0c4c0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.filter.active, .filter:hover {
+    background-color: #5cb85c;
+}
+
+.delete-all {
+    display: flex;
+    color: #eee;
+    padding: 7px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-all:hover {
+    border-radius: 5px;
+    background-color: #5cb85c;
+}
