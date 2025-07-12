@@ -28,7 +28,7 @@
     height: 600px;
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     
     /*animation: fadeIn 0.6s ease-in-out;*/
 }
@@ -66,7 +66,7 @@ h1 {
     padding: 10px 10px 10px 20px;
     background-color: transparent;
     border: 2px solid #c0c4c0;
-    border-radius: 30px;
+    border-radius: 10px;
     color: #eee;
     font-size: 16px;
     margin-right: 10px;
@@ -91,6 +91,10 @@ h1 {
     border-radius: 40px;
     width: 40px;
     height: 40px;
+}
+
+.add-button:hover {
+    color: rgb(232, 230, 230);
 }
 
 .empty-image {
@@ -122,7 +126,7 @@ h1 {
 }
 
 .todo:hover {
-    background-color:linear-gradient(to bottom, #69c869, #4a8d4a);
+    background-image:linear-gradient(to bottom, #69c869, #4a8d4a);
 }
 
 .todo label {
@@ -159,8 +163,8 @@ input:checked + span {
 }
 
 .todo:hover input:checked + span::before, input:checked + span::before {
-    background: url(./check.svg) 50% 50% no-repeat green;
-    border-color: green;
+    background: url(./check.svg) 50% 50% no-repeat rgb(1, 155, 1);
+    border-color: rgb(1, 155, 1);
 }
 
 .todo:hover span::before {
@@ -176,9 +180,10 @@ input:checked + span {
 }
 
 .todos-container  {
-    height: 380px;
+    height: 370px;
     overflow: overlay;
 }
+
 
 .todos-container::-webkit-scrollbar{
     width: 5px;
@@ -209,7 +214,7 @@ input:checked + span {
 .filter {
     color: #eee;
     padding: 5px 15px;
-    border-radius: 100px;
+    border-radius: 10px;
     border: 2px solid #c0c4c0;
     transition: all 0.2s ease;
     cursor: pointer;
