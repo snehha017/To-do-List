@@ -18,6 +18,7 @@ def get_connection():
 
 @app.route('/')
 def index():
+
     return render_template('registration.html')
 
 def checkUsername(name: str) -> bool:
@@ -119,5 +120,7 @@ def delete(id):
     conn.close()
     return redirect(url_for('todo'))
 
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
